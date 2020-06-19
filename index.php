@@ -1,2 +1,2 @@
 $null 
-<?php include_once("landingpage.html"); ?>
+<?php include_once("index.html"); ?>
