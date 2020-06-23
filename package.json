@@ -4,8 +4,8 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "serve"
+    "start": "serve",
+    "dev": "node app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
