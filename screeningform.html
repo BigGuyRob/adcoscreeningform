@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>COVID-19 Screening Form</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="jumbotron">
+        <h1 class="display-4">COVID-19 Screening Form</h1>
+        <p class="lead">Read the questions below and select the appropriate answer.</p>
+        <hr class="my-4">
+      </div>
+      <p style="padding-left: 50px">Have you experienced any of the following sumptoms of COVID-19 in the past 14 days:</p>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left: 50px">
+        <label class="btn btn-success">
+          <input type="radio" name="options1" id="option1" value="FEVER" required> FEVER
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" name="options1" id="option2" value= "COUGH" required> COUGH
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" name="options1" id="option3" value= "SHORTNESS OF BREATH" required> SHORTNESS OF BREATH
+        </label>
+        <label class="btn btn-success">
+            <input type="radio" name="options1" id="option4" value = "FLU LIKE SYMPTOMS" required> FLU LIKE SYMPTOMS
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options1" id="option5" value = "NONE" required> NONE
+          </label>
+      </div>
+      <br>
+      <br>
+      <p style="padding-left: 50px">Have you knowingly been in close or proximate contact in the past 14 days with anyone who has Flu like Symptoms?</p>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left: 50px">
+        <label class="btn btn-success">
+            <input type="radio" name="options2" id="optionY2" value = "YES" required> YES
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options2" id="optionN2" value = "NO" required> NO
+          </label>
+      </div>
+      <br>
+      <br>
+      <p style="padding-left: 50px">Have you knowingly been in close or proximate contact in the past 14 days with anyone who has tested positive for COVID-19 or has symptoms of COVID-19?</p>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left: 50px">
+        <label class="btn btn-success">
+            <input type="radio" name="options3" id="optionY3" value = "YES" required> YES
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options3" id="optionN3" value = "NO" required> NO
+          </label>
+      </div>
+      <br>
+      <br>
+      <p style="padding-left: 50px">Have you tested positive for COVID-19 in the past 14 days?</p>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left: 50px">
+        <label class="btn btn-success">
+            <input type="radio" name="options4" id="optionY4" value = "YES" required> YES
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options4" id="optionN4" value = "NO" required> NO
+          </label>
+      </div>
+      <br>
+      <br>
+      <div style="padding-left: 50px">
+        <button type="submit" class= "btn-primary" onclick="getResponse();">Submit Form</button>
+      </div>
+      <br>
+      <br>
+      <div id="result">RESULT</div>
+      <script>
+          function getResponse(){
+            displayRadioValue();
+          }
+          function displayRadioValue() { 
+            document.getElementById("result").innerHTML = ""; 
+            var ele = document.getElementsByTagName('input'); 
+              
+            for(i = 0; i < ele.length; i++) { 
+                  
+                if(ele[i].type="radio") { 
+                  
+                    if(ele[i].checked) 
+                        document.getElementById("result").innerHTML 
+                                += ele[i].name + " Value: " 
+                                + ele[i].value + "<br>"; 
+                } 
+            } 
+            axios.post('https://ohithastobeoriginal.herokuapp.com', {Message:"nothing"});
+        } 
+      </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,35 +1,14 @@
-var http = require('http'); // 1 - Import Node.js core module
-const port = process.env.PORT || 5000;
+const express = require("express");
+const app = express();
+const cors = require("cors");
 
-const uri = "mongodb+srv://Rob:Cinderblock3@cluster0-jk0p0.mongodb.net/ADCOc19?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
+app.use(cors());
 
-
-
-var server = http.createServer(function (req, res) {   // 2 - creating server
-
-    if (req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => {
-        body += chunk.toString();
-    });
-    req.on('end', () => {
-        try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-
-        // Make the appropriate DB calls
-
-    } finally {
-        // Close the connection to the MongoDB cluster
-        await client.close();
-    }
-
-	
-        res.end('ok');
-    });
-}
-
+app.post("/", (req, res) => {
+  // perform operation and return response.
+  res.status(200).json({ message: "It worked!" });
 });
 
-server.listen(port); //3 - listen for any incoming requests
+app.listen(3000, function() {
+    console.log("server is running");
+  });
