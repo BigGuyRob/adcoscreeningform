@@ -1,15 +1,18 @@
-var http = require('http');
-var fs = require('fs');
+// server.js
+// load the things we need
+var express = require('express');
+var app = express();
 
-const PORT=8080; 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
-fs.readFile('index.html', function (err, html) {
+// use res.render to load up an ejs view file
 
-    if (err) throw err;    
-
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(PORT);
+// index page 
+app.get('/', function(req, res) {
+    res.render('index');
 });
+
+
+app.listen(8080);
+console.log('8080 is the magic port');
