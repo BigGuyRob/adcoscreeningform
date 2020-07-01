@@ -20,7 +20,7 @@
     "serve": "^10.0.1"
   },
   "engines": {
-    "node": "4.0.0"
+    "node": "12.18.1"
   },
   "repository": {
     "type": "git",
